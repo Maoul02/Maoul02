@@ -12,6 +12,7 @@ programmer sur Arduino IDE en sélectionnant *ESP32-WROOM-DA Module*
 * **ATTENTION** l'ESP32 et la bande de LED doivent être sur la même alimentation
 
 >![esp_led.png](https://github.com/Maoul02/Maoul02/assets/165054887/b09e4d5f-e7b7-427a-b346-25d7127fa625)
+>
 >*Test réalisés avec un condensateur de 1000µF et une résistance de 330Ω*
 
 * CAN Transceiver MCP2561
