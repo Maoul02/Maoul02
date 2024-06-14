@@ -11,13 +11,12 @@ programmer sur Arduino IDE en sélectionnant *ESP32-WROOM-DA Module*
 
 * **ATTENTION** l'ESP32 et la bande de LED doivent être sur la même alimentation
 
->![esp_led.png](https://github.com/Maoul02/Maoul02/assets/165054887/b09e4d5f-e7b7-427a-b346-25d7127fa625)
->
+>![](esp_led.png)
 >*Test réalisés avec un condensateur de 1000µF et une résistance de 330Ω*
 
 * CAN Transceiver MCP2561
 
->![mcp.png](https://github.com/Maoul02/Maoul02/assets/165054887/5873006a-e3a5-4eda-a57a-e8a4a1f7ddb5)
+>![](mcp.png)
 
 <br>
 
@@ -35,7 +34,7 @@ programmer sur Arduino IDE en sélectionnant *ESP32-WROOM-DA Module*
 
 Liste des trames de chaque mode
 
-###### Mode configuration
+#### Mode configuration
 
 Le nombre de LED est un entier sur 16 bits, les 4 octets suivants sont les numéros de la première LED de chaque côté du robot (*exemple, si la bande de LED commence à l'arrière droite du robot et que chaque côté de robot contient 20 LED on aura les valeurs 0, 20, 40,60*)
 
@@ -43,7 +42,7 @@ Le nombre de LED est un entier sur 16 bits, les 4 octets suivants sont les numé
 |---|---|---|---|---|---|---|
 | 0 |Nombre de LED <15:8> |Nombre de LED <7:0>|Coordonnées début arrière|Coordonnées début gauche|Coordonnées début avant|Coordonnées début droite|
 
-###### Mode Chargement
+#### Mode Chargement
 
 Ce mode est lancé dès que l'ESP32 est alimentée jusqu'à ce qu'une nouvelle trame soit reçue, on il n'a que la luminosité pour paramètre
 
@@ -51,24 +50,24 @@ Ce mode est lancé dès que l'ESP32 est alimentée jusqu'à ce qu'une nouvelle t
 |---|---|
 | 1 | Luminosité |
 
-###### Mode Coordonnées
+#### Mode Coordonnées
 
 Ce mode allume les LED selon les coordonnées et les valeurs R, G et B dans la trame, les LED en dehors des coordonnées gardent leur couleur précédente.
 
 >**Le paramètre luminosité modifie toute la bande de LED**
 
-| Octet 0 (Mode) |  Octet 1 | Octet 2  |Octet 3|Octet 4|Octet 5|Octet 6|
-|---|---|---|---|---|---|---|
-| 3 | Coordonnées de début |Coordonnées de fin|R|G|B|Luminosité|
+| Octet 0 (Mode) |  Octet 1 | Octet 2  |Octet 3|Octet 4|Octet 5|Octet 6|Octet 7|
+|---|---|---|---|---|---|---|---|
+| 2 | Coordonnées de début |Coordonnées de fin|R|G|B|Luminosité|Reset|
 
-###### Mode Arc-En-Ciel
+#### Mode Arc-En-Ciel
 
 
 | Octet 0 (Mode) |  Octet 1 |
 |---|---|
 | 3 | Luminosité |
 
-###### Mode Couleur Uni
+#### Mode Couleur Uni
 
 Toute la bande de LED s'allume à la couleur et la luminosité demandée
 
@@ -76,7 +75,7 @@ Toute la bande de LED s'allume à la couleur et la luminosité demandée
 |---|---|---|---|---|
 | 4 |R|G|B|Luminosité|
 
-###### Mode 5
+#### Mode 5
 
 Même paramètres qu'avant mais une LED sur deux s'allume
 
@@ -84,7 +83,7 @@ Même paramètres qu'avant mais une LED sur deux s'allume
 |---|---|---|---|---|
 | 5 |R|G|B|Luminosité|
 
-###### Mode Clignontant
+#### Mode Clignontant
 
 Ce mode utilise les coordonnées arrière, gauche, devant et droite afin d'afficher des clignotants sur la partie arrière. La direction du clignotant est choisi avec l'octet direction, si il est égal à 1 le clignotant va vers la droite, si il est égal à 0 le clignotant va à gauche. On a un également un paramètre de luminosité comme avant
 
